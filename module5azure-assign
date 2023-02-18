@@ -1,0 +1,22 @@
+sudo su
+apt-get update -y
+apt-get install docker.io
+docker pull hshar/webapp
+docker images 
+docker run -itd --name dockerclass hshar/webapp
+docker ps
+docker exec -it dockerclass bash
+		- apt-get update -y
+		- cd /var/www/html
+		- ls
+		- rm index.php
+		- nano index.html
+			- This is my web app
+		- cat index.html
+		- exit
+docker commit dockerclass dockercry.azurecr.io/sampleapp
+docker images
+apt-get install azurecli
+az login
+az acr login --name dockercry
+docker push dockercry.azurecr.io/sampleapp
